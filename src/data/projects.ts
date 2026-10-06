@@ -1,5 +1,6 @@
 import pinned from "./pinnedRepos.json";
 import { projectOverrides } from "./projectOverrides";
+import { bannerUrl } from "./bannerRegistry";
 import { Project } from "../types";
 
 export type Lang = "en" | "fa";
@@ -19,6 +20,11 @@ export type FetchedRepo = {
   topics: string[];
   archived: boolean;
   pushedAt: string;
+  defaultBranch: string;
+  /** README-relative location of the banner, e.g. "mockups/banner.png". */
+  bannerPath: string | null;
+  /** Generated banner reference, e.g. "banners/food-app.jpg". */
+  banner?: string | null;
 };
 
 export type PinnedSnapshot = {
@@ -68,7 +74,9 @@ function toProject(repo: FetchedRepo, lang: Lang): Project {
     techStack,
     githubUrl: repo.githubUrl,
     liveUrl: repo.liveUrl ?? undefined,
-    image: override?.image,
+    // A hand-set override wins; otherwise use the banner generated from the
+    // repo README.
+    image: override?.image ?? bannerUrl(repo.banner),
   };
 }
 

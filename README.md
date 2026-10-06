@@ -34,8 +34,28 @@ To refresh locally (pinned items require the GraphQL API, so a token is needed):
     GITHUB_TOKEN=<token> npm run sync:projects
 
 `src/data/projectOverrides.ts` is the only file you edit by hand, and only for
-what GitHub cannot know: project screenshots and the Persian (fa) copy. Overrides
-are matched by repository name.
+what GitHub cannot know: the Persian (fa) copy and any hand-tuned wording.
+Overrides are matched by repository name.
+
+### Project banners
+
+Each card's banner is taken from that repository's README. The script looks for
+images whose filename contains "banner" (so a repo with many screenshots still
+picks the right one), downloads it, and downscales it to 1400px wide as a
+stripped JPEG. Generated files land in `src/data/banners/`.
+
+The sources are large — three of the four repos store 7000×3024 PNGs totalling
+about 5.9MB — while the cards render them around 458×170px. Downscaling brings
+the four banners to roughly 205KB in total.
+
+Two consequences worth knowing:
+
+- ImageMagick must be available where the script runs (`magick` or `convert`).
+  It is preinstalled on GitHub's `ubuntu-latest` runners. Without it the original
+  bytes are saved unscaled, so nothing breaks.
+- `src/data/bannerRegistry.ts` imports the generated files statically, which is
+  what lets Vite fingerprint them. A newly pinned repo needs an entry there
+  before its banner shows; until then the card renders without an image.
 
 Notes:
 

@@ -35,6 +35,7 @@ jobs:
 
       # GITHUB_TOKEN is provided automatically and can read your public repos
       # plus your pinned items via the GraphQL API.
+      # ImageMagick (preinstalled on ubuntu-latest) downsizes the README banners.
       - name: Fetch pinned repositories
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -43,12 +44,12 @@ jobs:
 
       - name: Commit updated project data
         run: |
-          if git diff --quiet -- src/data/pinnedRepos.json; then
+          if git diff --quiet -- src/data/pinnedRepos.json src/data/banners; then
             echo "Project data unchanged; nothing to commit."
           else
             git config user.name  "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/data/pinnedRepos.json
+            git add src/data/pinnedRepos.json src/data/banners
             git commit -m "chore: sync pinned repos data"
             git push
           fi

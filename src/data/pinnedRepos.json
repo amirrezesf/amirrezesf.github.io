@@ -19,7 +19,10 @@
       "language": "Dart",
       "topics": [],
       "archived": false,
-      "pushedAt": "2025-11-30T08:59:46Z"
+      "pushedAt": "2025-11-30T08:59:46Z",
+      "defaultBranch": "main",
+      "bannerPath": "images/banner-big.png",
+      "banner": "banners/finance-app.jpg"
     },
     {
       "name": "Maze-CRM",
@@ -37,7 +40,10 @@
       "language": "Vue",
       "topics": [],
       "archived": false,
-      "pushedAt": "2026-09-29T16:00:56Z"
+      "pushedAt": "2026-09-29T16:00:56Z",
+      "defaultBranch": "main",
+      "bannerPath": "Banner.png",
+      "banner": "banners/maze-crm.jpg"
     },
     {
       "name": "Chat-App",
@@ -55,7 +61,10 @@
       "language": "Python",
       "topics": [],
       "archived": false,
-      "pushedAt": "2025-11-29T12:55:03Z"
+      "pushedAt": "2025-11-29T12:55:03Z",
+      "defaultBranch": "main",
+      "bannerPath": "mockups/banner.png",
+      "banner": "banners/chat-app.jpg"
     },
     {
       "name": "Food-App",
@@ -73,7 +82,10 @@
       "language": "Dart",
       "topics": [],
       "archived": false,
-      "pushedAt": "2025-10-30T18:22:47Z"
+      "pushedAt": "2025-10-30T18:22:47Z",
+      "defaultBranch": "main",
+      "bannerPath": "mockups/banner.png",
+      "banner": "banners/food-app.jpg"
     }
   ]
 }

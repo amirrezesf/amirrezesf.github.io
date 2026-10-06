@@ -16,6 +16,7 @@
 import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { extractBannerPaths, chooseBanner, rawUrl, processBanner } from "./banners.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -42,12 +43,16 @@ const PINNED_QUERY = `
             forkCount
             isArchived
             pushedAt
+            defaultBranchRef { name }
             primaryLanguage { name }
             languages(first: 6, orderBy: { field: SIZE, direction: DESC }) {
               nodes { name }
             }
             repositoryTopics(first: 8) {
               nodes { topic { name } }
+            }
+            readme: object(expression: "HEAD:README.md") {
+              ... on Blob { text }
             }
           }
         }
@@ -77,12 +82,16 @@ const TOP_REPOS_QUERY = `
           forkCount
           isArchived
           pushedAt
+          defaultBranchRef { name }
           primaryLanguage { name }
           languages(first: 6, orderBy: { field: SIZE, direction: DESC }) {
             nodes { name }
           }
           repositoryTopics(first: 8) {
             nodes { topic { name } }
+          }
+          readme: object(expression: "HEAD:README.md") {
+            ... on Blob { text }
           }
         }
       }
@@ -171,6 +180,9 @@ function toRepo(node) {
     // "flutter" and "Flutter" must not become two badges.
     .filter((t, i, all) => all.findIndex((x) => x.toLowerCase() === t.toLowerCase()) === i);
 
+  // Where the README's banner lives, so the image can be fetched separately.
+  const bannerPath = chooseBanner(extractBannerPaths(node.readme?.text));
+
   return {
     name: node.name,
     nameWithOwner: node.nameWithOwner,
@@ -185,6 +197,8 @@ function toRepo(node) {
     topics,
     archived: node.isArchived,
     pushedAt: node.pushedAt,
+    defaultBranch: node.defaultBranchRef?.name || "main",
+    bannerPath: bannerPath ? bannerPath.replace(/^\.?\//, "") : null,
   };
 }
 
@@ -213,11 +227,15 @@ async function main() {
 
   const repos = nodes.filter((n) => n && n.nameWithOwner).map(toRepo);
 
+  // Download each README banner and downscale it. A failure here is logged and
+  // skipped: a card without a banner is better than a failed deploy.
+  const withBanners = await attachBanners(repos);
+
   const payload = {
     generatedAt: new Date().toISOString(),
     username: USERNAME,
     source,
-    repos,
+    repos: withBanners,
   };
 
   await mkdir(dirname(OUTPUT), { recursive: true });
@@ -232,16 +250,50 @@ async function main() {
 
   const stable = JSON.stringify(payload, null, 2) + "\n";
   const previous = existing ? JSON.parse(existing) : null;
-  if (previous && JSON.stringify(previous.repos) === JSON.stringify(repos)) {
-    console.log(`Unchanged: ${repos.length} ${source} repositories.`);
+  if (previous && JSON.stringify(previous.repos) === JSON.stringify(withBanners)) {
+    console.log(`Unchanged: ${withBanners.length} ${source} repositories.`);
     return;
   }
 
   await writeFile(OUTPUT, stable, "utf8");
-  console.log(`Wrote ${repos.length} ${source} repositories to ${OUTPUT}`);
-  for (const r of repos) {
-    console.log(`  - ${r.nameWithOwner} (${r.techStack.join(", ") || "no tech detected"})`);
+  console.log(`Wrote ${withBanners.length} ${source} repositories to ${OUTPUT}`);
+  for (const r of withBanners) {
+    console.log(
+      `  - ${r.nameWithOwner} (${r.techStack.join(", ") || "no tech detected"})` +
+        (r.banner ? ` banner=${r.banner}` : " banner=none"),
+    );
   }
+}
+
+/**
+ * Downloads and optimizes each repo's banner, returning copies of the repo
+ * records with a `banner` field pointing at the generated file.
+ */
+async function attachBanners(repos) {
+  const out = [];
+
+  for (const repo of repos) {
+    if (!repo.bannerPath) {
+      console.log(`  banner ${repo.name}: none found in README`);
+      out.push(repo);
+      continue;
+    }
+
+    const url = rawUrl(repo.nameWithOwner, repo.defaultBranch, repo.bannerPath);
+    // The banner file is named after the repo, so renaming a repo or pointing
+    // at a different path cannot serve a stale image.
+    const slug = repo.name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-");
+
+    try {
+      const served = await processBanner(url, slug);
+      out.push({ ...repo, banner: served });
+    } catch (err) {
+      console.warn(`  banner ${repo.name}: skipped (${err.message})`);
+      out.push(repo);
+    }
+  }
+
+  return out;
 }
 
 main().catch(async (err) => {
