@@ -29,6 +29,52 @@ const JPEG_QUALITY = 78;
 const MAX_SOURCE_BYTES = 12 * 1024 * 1024;
 
 /**
+ * Conventional locations probed when the README has no banner-named image.
+ * Ordered by preference, so a repo that adds one of these is picked up without
+ * touching its README.
+ */
+export const FALLBACK_PATHS = [
+  "assets/banner.png",
+  "images/banner.png",
+  "assets/banner.jpg",
+  "images/banner.jpg",
+  "assets/banner.jpeg",
+  "images/banner.jpeg",
+  "banner.png",
+  "Banner.png",
+];
+
+/**
+ * Checks the conventional paths for a banner, returning the first that exists.
+ *
+ * Runs only after README parsing finds nothing, so the README always wins.
+ * Each probe is a HEAD request and stops at the first hit, so a repo with no
+ * conventional banner costs a handful of cheap requests.
+ */
+export async function probeFallbackBanner(nameWithOwner, branch) {
+  for (const path of FALLBACK_PATHS) {
+    const url = rawUrl(nameWithOwner, branch, path);
+    try {
+      const res = await fetch(url, {
+        method: "HEAD",
+        headers: { "User-Agent": "fetch-pinned-repos" },
+        redirect: "follow",
+      });
+      if (!res.ok) continue;
+
+      const type = res.headers.get("content-type") || "";
+      // Only accept something that is actually an image.
+      if (type && !type.startsWith("image/")) continue;
+
+      return path;
+    } catch {
+      // Network hiccup on one probe should not abort the remaining paths.
+    }
+  }
+  return null;
+}
+
+/**
  * Extracts candidate banner paths from README markdown.
  *
  * Handles both markdown `![alt](path "title")` and HTML <img src="...">,

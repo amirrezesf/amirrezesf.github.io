@@ -2,7 +2,7 @@
  * Tests for banner discovery and selection.
  * Run: node scripts/banners.test.mjs
  */
-import { extractBannerPaths, chooseBanner, rawUrl } from "./banners.mjs";
+import { extractBannerPaths, chooseBanner, rawUrl, FALLBACK_PATHS } from "./banners.mjs";
 
 let failures = 0;
 function check(name, cond, detail = "") {
@@ -100,6 +100,69 @@ check(
   rawUrl("u/r", "main", "my folder/banner.png") ===
     "https://raw.githubusercontent.com/u/r/main/my%20folder/banner.png",
 );
+
+console.log("\nconventional fallback paths");
+check("includes assets/banner.png", FALLBACK_PATHS.includes("assets/banner.png"));
+check("includes images/banner.png", FALLBACK_PATHS.includes("images/banner.png"));
+check("prefers assets/ over images/", FALLBACK_PATHS.indexOf("assets/banner.png") < FALLBACK_PATHS.indexOf("images/banner.png"));
+check("every path has a banner in the filename", FALLBACK_PATHS.every((p) => /banner/i.test(p)));
+check("covers png, jpg and jpeg", ["png", "jpg", "jpeg"].every((ext) => FALLBACK_PATHS.some((p) => p.endsWith(ext))));
+check("has no duplicates", new Set(FALLBACK_PATHS).size === FALLBACK_PATHS.length);
+
+console.log("\nprobeFallbackBanner");
+{
+  // Stub fetch so the probe is exercised without network access.
+  const realFetch = globalThis.fetch;
+  const calls = [];
+  const makeStub = (existing) => async (url, opts) => {
+    calls.push({ url, method: opts?.method });
+    const path = url.split("/main/")[1];
+    if (existing.includes(path)) {
+      return { ok: true, headers: { get: () => "image/png" } };
+    }
+    return { ok: false, status: 404, headers: { get: () => null } };
+  };
+
+  try {
+    globalThis.fetch = makeStub(["assets/banner.png"]);
+    const { probeFallbackBanner } = await import("./banners.mjs");
+    check("finds assets/banner.png", (await probeFallbackBanner("u/r", "main")) === "assets/banner.png");
+    check("stops probing at the first hit", calls.length === 1, `${calls.length} requests`);
+    check("uses HEAD requests", calls[0].method === "HEAD", calls[0].method);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+}
+{
+  const realFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async () => ({ ok: false, status: 404, headers: { get: () => null } });
+    const { probeFallbackBanner } = await import("./banners.mjs");
+    check("returns null when nothing exists", (await probeFallbackBanner("u/r", "main")) === null);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+}
+{
+  const realFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async () => ({ ok: true, headers: { get: () => "text/html" } });
+    const { probeFallbackBanner } = await import("./banners.mjs");
+    check("rejects a non-image content type", (await probeFallbackBanner("u/r", "main")) === null);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+}
+{
+  const realFetch = globalThis.fetch;
+  try {
+    globalThis.fetch = async () => { throw new Error("network down"); };
+    const { probeFallbackBanner } = await import("./banners.mjs");
+    check("survives a network error", (await probeFallbackBanner("u/r", "main")) === null);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+}
 
 console.log(failures === 0 ? "\nAll checks passed.\n" : `\n${failures} check(s) failed.\n`);
 process.exit(failures === 0 ? 0 : 1);

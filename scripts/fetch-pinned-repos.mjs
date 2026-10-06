@@ -16,7 +16,7 @@
 import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { extractBannerPaths, chooseBanner, rawUrl, processBanner } from "./banners.mjs";
+import { extractBannerPaths, chooseBanner, rawUrl, processBanner, probeFallbackBanner } from "./banners.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -181,6 +181,8 @@ function toRepo(node) {
     .filter((t, i, all) => all.findIndex((x) => x.toLowerCase() === t.toLowerCase()) === i);
 
   // Where the README's banner lives, so the image can be fetched separately.
+  // Null means "look in the conventional paths instead" (resolved in
+  // attachBanners, which is async).
   const bannerPath = chooseBanner(extractBannerPaths(node.readme?.text));
 
   return {
@@ -273,20 +275,32 @@ async function attachBanners(repos) {
   const out = [];
 
   for (const repo of repos) {
-    if (!repo.bannerPath) {
-      console.log(`  banner ${repo.name}: none found in README`);
+    let bannerPath = repo.bannerPath;
+
+    // No banner in the README: fall back to the conventional locations so a
+    // repo can opt in just by adding assets/banner.png (or images/banner.png).
+    if (!bannerPath) {
+      bannerPath = await probeFallbackBanner(repo.nameWithOwner, repo.defaultBranch);
+      if (bannerPath) {
+        console.log(`  banner ${repo.name}: no README banner, using ${bannerPath}`);
+      } else {
+        console.log(`  banner ${repo.name}: none found (README or conventional paths)`);
+      }
+    }
+
+    if (!bannerPath) {
       out.push(repo);
       continue;
     }
 
-    const url = rawUrl(repo.nameWithOwner, repo.defaultBranch, repo.bannerPath);
+    const url = rawUrl(repo.nameWithOwner, repo.defaultBranch, bannerPath);
     // The banner file is named after the repo, so renaming a repo or pointing
     // at a different path cannot serve a stale image.
     const slug = repo.name.toLowerCase().replace(/[^a-z0-9._-]+/g, "-");
 
     try {
       const served = await processBanner(url, slug);
-      out.push({ ...repo, banner: served });
+      out.push({ ...repo, banner: served, bannerPath });
     } catch (err) {
       console.warn(`  banner ${repo.name}: skipped (${err.message})`);
       out.push(repo);

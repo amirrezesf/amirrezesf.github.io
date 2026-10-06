@@ -44,6 +44,17 @@ images whose filename contains "banner" (so a repo with many screenshots still
 picks the right one), downloads it, and downscales it to 1400px wide as a
 stripped JPEG. Generated files land in `src/data/banners/`.
 
+If a README has no banner-named image, the script then probes these conventional
+locations, in order, and uses the first that exists:
+
+    assets/banner.png   images/banner.png
+    assets/banner.jpg   images/banner.jpg
+    assets/banner.jpeg  images/banner.jpeg
+    banner.png          Banner.png
+
+So a repo can opt in simply by adding `assets/banner.png`, without editing its
+README. The README always takes precedence over these paths.
+
 The sources are large — three of the four repos store 7000×3024 PNGs totalling
 about 5.9MB — while the cards render them around 458×170px. Downscaling brings
 the four banners to roughly 205KB in total.
