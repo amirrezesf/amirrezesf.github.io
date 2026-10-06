@@ -1,49 +1,68 @@
 {
-  "generatedAt": "2026-10-06T00:00:00.000Z",
+  "generatedAt": "2026-10-06T01:25:14.135Z",
   "username": "amirrezesf",
   "source": "pinned",
   "repos": [
     {
-      "name": "Finance-App",
-      "nameWithOwner": "amirrezesf/Finance-App",
-      "githubUrl": "https://github.com/amirrezesf/Finance-App",
+      "name": "SkyroomBot",
+      "nameWithOwner": "amirrezesf/SkyroomBot",
+      "githubUrl": "https://github.com/amirrezesf/SkyroomBot",
       "liveUrl": null,
-      "description": "A clean and simple Flutter UI for a modern finance app. The project focuses on minimalistic design, smooth layouts, reusable widgets, and responsive components suitable for financial dashboards, transaction pages, and personal budgeting screens.",
-      "category": "Flutter",
+      "description": "ربات دسکتاپ خودکار برای ورود به کلاس‌های آنلاین اسکای‌روم — بدون نیاز به حضور شما، با تشخیص قطعی اتصال، ورود در میانهٔ کلاس، و خواب و بیدارباش خودکار لپ‌تاپ.",
+      "category": "Automation",
       "techStack": [
-        "Flutter",
-        "Dart"
+        "Python",
+        "automation",
+        "bot",
+        "persian",
+        "pyqt6",
+        "pythton",
+        "selenium",
+        "skyroom",
+        "Shell"
       ],
       "stars": 1,
       "forks": 0,
+      "language": "Python",
+      "topics": [
+        "automation",
+        "bot",
+        "persian",
+        "pyqt6",
+        "pythton",
+        "selenium",
+        "skyroom"
+      ],
+      "archived": false,
+      "pushedAt": "2026-10-04T11:24:21Z",
+      "defaultBranch": "main",
+      "bannerPath": "assets/banner.png",
+      "banner": "banners/skyroombot.jpg"
+    },
+    {
+      "name": "Food-App",
+      "nameWithOwner": "amirrezesf/Food-App",
+      "githubUrl": "https://github.com/amirrezesf/Food-App",
+      "liveUrl": null,
+      "description": "A full-stack food delivery system with map-based coverage, multi-branch support, financial insights, and real-time delivery tracking across web and mobile platforms.",
+      "category": "Project",
+      "techStack": [
+        "Flutter",
+        "C++",
+        "C",
+        "TypeScript",
+        "JavaScript",
+        "CMake"
+      ],
+      "stars": 4,
+      "forks": 1,
       "language": "Dart",
       "topics": [],
       "archived": false,
-      "pushedAt": "2025-11-30T08:59:46Z",
+      "pushedAt": "2025-10-30T18:22:48Z",
       "defaultBranch": "main",
-      "bannerPath": "images/banner-big.png",
-      "banner": "banners/finance-app.jpg"
-    },
-    {
-      "name": "Maze-CRM",
-      "nameWithOwner": "amirrezesf/Maze-CRM",
-      "githubUrl": "https://github.com/amirrezesf/Maze-CRM",
-      "liveUrl": null,
-      "description": "داشبورد راست‌به‌چین CRM ساخته‌شده با Nuxt 4 برای مدیریت فروش، اشتراک‌ها، داوطلبان، آزمون‌ها و پشتیبانی. رابط فارسی‌محور با تقویم جلالی و نمودارهای فروش، آماده برای اتصال به احراز هویت و APIهای واقعی.",
-      "category": "Vue",
-      "techStack": [
-        "Vue.js",
-        "TypeScript"
-      ],
-      "stars": 0,
-      "forks": 0,
-      "language": "Vue",
-      "topics": [],
-      "archived": false,
-      "pushedAt": "2026-09-29T16:00:56Z",
-      "defaultBranch": "main",
-      "bannerPath": "Banner.png",
-      "banner": "banners/maze-crm.jpg"
+      "bannerPath": "mockups/banner.png",
+      "banner": "banners/food-app.jpg"
     },
     {
       "name": "Chat-App",
@@ -51,13 +70,17 @@
       "githubUrl": "https://github.com/amirrezesf/Chat-App",
       "liveUrl": null,
       "description": "A Flutter Chat app with django backend",
-      "category": "Python",
+      "category": "Project",
       "techStack": [
         "Python",
-        "Dart"
+        "C++",
+        "CMake",
+        "HTML",
+        "CSS",
+        "Swift"
       ],
       "stars": 0,
-      "forks": 0,
+      "forks": 1,
       "language": "Python",
       "topics": [],
       "archived": false,
@@ -67,25 +90,66 @@
       "banner": "banners/chat-app.jpg"
     },
     {
-      "name": "Food-App",
-      "nameWithOwner": "amirrezesf/Food-App",
-      "githubUrl": "https://github.com/amirrezesf/Food-App",
+      "name": "AnyDeskApp",
+      "nameWithOwner": "amirrezesf/AnyDeskApp",
+      "githubUrl": "https://github.com/amirrezesf/AnyDeskApp",
       "liveUrl": null,
-      "description": "A full-stack food delivery system with map-based coverage, multi-branch support, financial insights, and real-time delivery tracking across web and mobile platforms.",
-      "category": "Flutter",
+      "description": "Python-based remote desktop app with secure video streaming and control, featuring a simple GUI for both client and server.",
+      "category": "Project",
       "techStack": [
-        "Flutter",
-        "Dart"
+        "Python"
       ],
-      "stars": 4,
+      "stars": 0,
       "forks": 0,
-      "language": "Dart",
+      "language": "Python",
       "topics": [],
       "archived": false,
-      "pushedAt": "2025-10-30T18:22:47Z",
+      "pushedAt": "2026-07-04T13:11:57Z",
       "defaultBranch": "main",
-      "bannerPath": "mockups/banner.png",
-      "banner": "banners/food-app.jpg"
+      "bannerPath": "images/banner.png",
+      "banner": "banners/anydeskapp.jpg"
+    },
+    {
+      "name": "LumiNote",
+      "nameWithOwner": "amirrezesf/LumiNote",
+      "githubUrl": "https://github.com/amirrezesf/LumiNote",
+      "liveUrl": null,
+      "description": "Highlight, annotate, and draw on any webpage — organize everything in a searchable library and export to Word or PDF. Local-first, no accounts.",
+      "category": "Project",
+      "techStack": [
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "topics": [],
+      "archived": false,
+      "pushedAt": "2026-08-12T13:53:58Z",
+      "defaultBranch": "main",
+      "bannerPath": "liminote-banner.png",
+      "banner": "banners/luminote.jpg"
+    },
+    {
+      "name": "Jarvis",
+      "nameWithOwner": "amirrezesf/Jarvis",
+      "githubUrl": "https://github.com/amirrezesf/Jarvis",
+      "liveUrl": null,
+      "description": "شنوندهٔ هوشمند کلاس و دستیار صوتی لوکال با تبدیل گفتار به متن و استخراج خودکار دستورها",
+      "category": "Project",
+      "techStack": [
+        "Python"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "archived": false,
+      "pushedAt": "2026-10-03T22:13:14Z",
+      "defaultBranch": "main",
+      "bannerPath": "assets/banner.png",
+      "banner": "banners/jarvis.jpg"
     }
   ]
 }
