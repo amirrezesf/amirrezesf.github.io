@@ -43,7 +43,7 @@ const PINNED_QUERY = `
             isArchived
             pushedAt
             primaryLanguage { name }
-            languages(first: 6, order: { field: SIZE, direction: DESC }) {
+            languages(first: 6, orderBy: { field: SIZE, direction: DESC }) {
               nodes { name }
             }
             repositoryTopics(first: 8) {
@@ -78,7 +78,7 @@ const TOP_REPOS_QUERY = `
           isArchived
           pushedAt
           primaryLanguage { name }
-          languages(first: 6, order: { field: SIZE, direction: DESC }) {
+          languages(first: 6, orderBy: { field: SIZE, direction: DESC }) {
             nodes { name }
           }
           repositoryTopics(first: 8) {

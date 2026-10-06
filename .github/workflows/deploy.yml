@@ -56,6 +56,10 @@ jobs:
       - name: Test fetch script
         run: npm test
 
+      # Catches malformed GraphQL locally rather than in a failed deploy.
+      - name: Validate GraphQL queries against GitHub's schema
+        run: node scripts/validate-queries.mjs
+
       - name: Typecheck
         run: npm run lint
 
