@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { translations, translatedProjects } from "../translations";
+import { translations } from "../translations";
+import { buildProjects } from "../data/projects";
+import { Project } from "../types";
 
 type Theme = "dark" | "light";
 type Lang = "en" | "fa";
@@ -11,7 +13,7 @@ interface AppContextType {
   setLang: (lang: Lang) => void;
   t: (key: keyof typeof translations.en) => string;
   isRtl: boolean;
-  projectsList: typeof translatedProjects.en;
+  projectsList: Project[];
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -65,7 +67,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     return translations[lang][key] || translations.en[key] || "";
   };
 
-  const projectsList = translatedProjects[lang];
+  const projectsList = buildProjects(lang);
 
   return (
     <AppContext.Provider

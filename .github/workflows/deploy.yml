@@ -1,0 +1,72 @@
+name: Sync pinned repos & deploy
+
+# Keeps the projects section in sync with GitHub. Pin or unpin a repository on
+# your profile and this picks it up automatically.
+on:
+  push:
+    branches: [v2]
+  schedule:
+    # Every 6 hours. Pinning changes and repo descriptions are rare, so there is
+    # no need to hammer the API.
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+# Never let two deploys race (e.g. a push while a scheduled run is in flight).
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # GITHUB_TOKEN is provided automatically and can read your public repos
+      # plus your pinned items via the GraphQL API.
+      - name: Fetch pinned repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: amirrezesf
+        run: node scripts/fetch-pinned-repos.mjs
+
+      - name: Commit updated project data
+        run: |
+          if git diff --quiet -- src/data/pinnedRepos.json; then
+            echo "Project data unchanged; nothing to commit."
+          else
+            git config user.name  "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add src/data/pinnedRepos.json
+            git commit -m "chore: sync pinned repos data"
+            git push
+          fi
+
+      - name: Test fetch script
+        run: npm test
+
+      - name: Typecheck
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          # gh-pages holds only build output, so no history is needed.
+          force_orphan: true

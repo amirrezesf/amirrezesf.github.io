@@ -1,0 +1,79 @@
+{
+  "generatedAt": "2026-10-06T00:00:00.000Z",
+  "username": "amirrezesf",
+  "source": "pinned",
+  "repos": [
+    {
+      "name": "Finance-App",
+      "nameWithOwner": "amirrezesf/Finance-App",
+      "githubUrl": "https://github.com/amirrezesf/Finance-App",
+      "liveUrl": null,
+      "description": "A clean and simple Flutter UI for a modern finance app. The project focuses on minimalistic design, smooth layouts, reusable widgets, and responsive components suitable for financial dashboards, transaction pages, and personal budgeting screens.",
+      "category": "Flutter",
+      "techStack": [
+        "Flutter",
+        "Dart"
+      ],
+      "stars": 1,
+      "forks": 0,
+      "language": "Dart",
+      "topics": [],
+      "archived": false,
+      "pushedAt": "2025-11-30T08:59:46Z"
+    },
+    {
+      "name": "Maze-CRM",
+      "nameWithOwner": "amirrezesf/Maze-CRM",
+      "githubUrl": "https://github.com/amirrezesf/Maze-CRM",
+      "liveUrl": null,
+      "description": "داشبورد راست‌به‌چین CRM ساخته‌شده با Nuxt 4 برای مدیریت فروش، اشتراک‌ها، داوطلبان، آزمون‌ها و پشتیبانی. رابط فارسی‌محور با تقویم جلالی و نمودارهای فروش، آماده برای اتصال به احراز هویت و APIهای واقعی.",
+      "category": "Vue",
+      "techStack": [
+        "Vue.js",
+        "TypeScript"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "language": "Vue",
+      "topics": [],
+      "archived": false,
+      "pushedAt": "2026-09-29T16:00:56Z"
+    },
+    {
+      "name": "Chat-App",
+      "nameWithOwner": "amirrezesf/Chat-App",
+      "githubUrl": "https://github.com/amirrezesf/Chat-App",
+      "liveUrl": null,
+      "description": "A Flutter Chat app with django backend",
+      "category": "Python",
+      "techStack": [
+        "Python",
+        "Dart"
+      ],
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "topics": [],
+      "archived": false,
+      "pushedAt": "2025-11-29T12:55:03Z"
+    },
+    {
+      "name": "Food-App",
+      "nameWithOwner": "amirrezesf/Food-App",
+      "githubUrl": "https://github.com/amirrezesf/Food-App",
+      "liveUrl": null,
+      "description": "A full-stack food delivery system with map-based coverage, multi-branch support, financial insights, and real-time delivery tracking across web and mobile platforms.",
+      "category": "Flutter",
+      "techStack": [
+        "Flutter",
+        "Dart"
+      ],
+      "stars": 4,
+      "forks": 0,
+      "language": "Dart",
+      "topics": [],
+      "archived": false,
+      "pushedAt": "2025-10-30T18:22:47Z"
+    }
+  ]
+}

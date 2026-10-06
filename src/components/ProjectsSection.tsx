@@ -1,9 +1,9 @@
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 import { Github, ExternalLink } from "lucide-react";
 import TiltCard from "./TiltCard";
 import { useApp } from "../context/AppContext";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -13,7 +13,7 @@ const containerVariants = {
   },
 };
 
-const cardWrapperVariants = {
+const cardWrapperVariants: Variants = {
   hidden: { opacity: 0, y: 40, rotateX: 10 },
   visible: {
     opacity: 1,

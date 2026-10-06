@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { skills } from "../data";
+import { skills } from "../data/skills";
 import { Sparkles, Terminal } from "lucide-react";
 import TiltCard from "./TiltCard";
 import { useApp } from "../context/AppContext";
