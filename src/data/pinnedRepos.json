@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T01:25:14.135Z",
+  "generatedAt": "2026-11-03T14:44:40.714Z",
   "username": "amirrezesf",
   "source": "pinned",
   "repos": [
@@ -34,9 +34,9 @@
         "skyroom"
       ],
       "archived": false,
-      "pushedAt": "2026-10-04T11:24:21Z",
+      "pushedAt": "2026-11-03T14:08:10Z",
       "defaultBranch": "main",
-      "bannerPath": "assets/banner.png",
+      "bannerPath": "mockups/banner.png",
       "banner": "banners/skyroombot.jpg"
     },
     {

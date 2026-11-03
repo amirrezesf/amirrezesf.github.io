@@ -34,14 +34,18 @@ const MAX_SOURCE_BYTES = 12 * 1024 * 1024;
  * touching its README.
  */
 export const FALLBACK_PATHS = [
+  "banner.png",
+  "./banner.png",
+  "/banner.png",
+  "Banner.png",
+  "mockups/banner.png",
+  "mockups/Banner.png",
   "assets/banner.png",
   "images/banner.png",
   "assets/banner.jpg",
   "images/banner.jpg",
   "assets/banner.jpeg",
   "images/banner.jpeg",
-  "banner.png",
-  "Banner.png",
 ];
 
 /**
