@@ -14,12 +14,11 @@ const containerVariants: Variants = {
 };
 
 const cardWrapperVariants: Variants = {
-  hidden: { opacity: 0, y: 40, rotateX: 10 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    rotateX: 0,
-    transition: { type: "spring", stiffness: 80, damping: 12 },
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
@@ -47,19 +46,19 @@ export default function ProjectsSection() {
           </h2>
         </motion.div>
 
-        {/* Projects Grid with 3D TiltCards */}
+        {/* Projects Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 perspective-[1200px]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
         >
           {projectsList.map((project) => (
             <motion.div
               key={project.id}
               variants={cardWrapperVariants}
-              className="h-full transform-gpu"
+              className="h-full"
             >
               <TiltCard className="p-6 h-full flex flex-col justify-between group">
                 <div>
@@ -104,13 +103,13 @@ export default function ProjectsSection() {
                   </div>
 
                   {/* Project Links */}
-                  <div className={`flex gap-4 items-center border-t border-glass-border pt-4 ${isRtl ? "flex-row-reverse" : ""}`}>
+                  <div className={`flex gap-3 items-center border-t border-glass-border pt-4 ${isRtl ? "flex-row-reverse" : ""}`}>
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 font-mono text-xs text-text-main/70 hover:text-accent-blue border-b border-transparent hover:border-accent-teal pb-0.5 transition-all duration-200 group/link"
+                        className="inline-flex items-center gap-1.5 font-mono text-xs text-text-main/80 hover:text-accent-blue py-1.5 px-3 rounded-lg bg-glass-sub-bg/50 hover:bg-glass-sub-bg border border-glass-border hover:border-accent-blue/40 transition-all duration-200 group/link"
                       >
                         <Github size={14} className="group-hover/link:scale-110 transition-transform duration-200" />
                         <span>{t("code")}</span>
@@ -119,7 +118,7 @@ export default function ProjectsSection() {
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
-                        className="inline-flex items-center gap-1.5 font-mono text-xs text-text-main/70 hover:text-accent-teal border-b border-transparent hover:border-accent-teal pb-0.5 transition-all duration-200 group/link"
+                        className="inline-flex items-center gap-1.5 font-mono text-xs text-text-main/80 hover:text-accent-teal py-1.5 px-3 rounded-lg bg-glass-sub-bg/50 hover:bg-glass-sub-bg border border-glass-border hover:border-accent-teal/40 transition-all duration-200 group/link"
                       >
                         <ExternalLink size={14} className="group-hover/link:scale-110 transition-transform duration-200" />
                         <span>{t("demo")}</span>
