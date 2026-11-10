@@ -22,7 +22,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // Read initial states from localStorage with smart fallbacks
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem("portfolio-theme");
-    return (saved as Theme) || "dark";
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    console.log(`system theme: ${systemTheme}`)
+    return (saved as Theme) || systemTheme;
   });
 
   const [lang, setLangState] = useState<Lang>(() => {
@@ -43,7 +45,6 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       root.classList.add("dark");
       root.classList.remove("light");
     }
-    localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
 
   // Side effects: update document direction and language attribute
@@ -55,6 +56,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   }, [lang]);
 
   const toggleTheme = () => {
+    localStorage.setItem("portfolio-theme", theme === "dark" ? "light" : "dark");
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
