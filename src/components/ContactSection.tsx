@@ -50,7 +50,7 @@ export default function ContactSection() {
                 <motion.a
                   whileHover={{ scale: 1.15, y: -4, borderColor: "rgba(62, 189, 106, 0.4)" }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://github.com/divslayer"
+                  href="https://github.com/amirrezesf"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"

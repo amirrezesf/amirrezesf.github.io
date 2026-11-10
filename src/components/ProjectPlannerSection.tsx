@@ -550,7 +550,7 @@ I'd love to jump on an introduction call to discuss building this!`;
 
                   {/* Mail to Amir directly with brief auto-populated */}
                   <a
-                    href={`mailto:divslayer.git@gmail.com?subject=Project Brief Consultation (${platform.toUpperCase()})&body=${encodeURIComponent(getBriefText())}`}
+                    href={`mailto:amirrezesf@gmail.com?subject=Project Brief Consultation (${platform.toUpperCase()})&body=${encodeURIComponent(getBriefText())}`}
                     className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 font-mono text-[10px] px-3.5 py-2.5 rounded-lg bg-accent-blue hover:bg-accent-blue/85 border border-accent-blue/20 text-white font-bold shadow-md shadow-accent-blue/10 transition-all cursor-pointer select-none text-center"
                   >
                     <Mail size={12} className="inline" />

@@ -24,7 +24,7 @@ export default function Header() {
         {/* Brand Logo */}
         <a href="#hero" className="flex items-center gap-1.5 font-mono text-lg font-bold text-text-main tracking-tight group">
           <span className="text-accent-blue">//</span>
-          <span className="group-hover:text-accent-teal transition-colors duration-200">DivSlayer</span>
+          <span className="group-hover:text-accent-teal transition-colors duration-200">Amirrezesf</span>
         </a>
 
         {/* Navigation Links */}

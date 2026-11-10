@@ -24,7 +24,7 @@ export default function TerminalSection() {
         input: "system_init",
         output: (
           <div className="space-y-1 font-mono text-xs text-accent-teal/90">
-            <p className="font-bold">DivSlayer Terminal v1.5.0 [Tehran, UTC+3.5]</p>
+            <p className="font-bold">Amirrezesf Terminal v1.5.0 [Tehran, UTC+3.5]</p>
             <p>Initializing secure server connection... Success.</p>
             <p>Type <span className="text-accent-blue font-bold">help</span> to explore available profile commands.</p>
           </div>
@@ -216,7 +216,7 @@ export default function TerminalSection() {
  / |   | \\`}
             </div>
             <div className="space-y-1">
-              <p className="text-accent-teal font-bold">amir@divslayer.sh</p>
+              <p className="text-accent-teal font-bold">amir@amirrezesf.sh</p>
               <p className="text-gray-500">-----------------</p>
               <p><span className="text-accent-blue font-semibold">OS:</span> AmirReza Esfandiari Profile OS x86_64</p>
               <p><span className="text-accent-blue font-semibold">Host:</span> Creative Development Core v19</p>
@@ -236,7 +236,7 @@ export default function TerminalSection() {
             <p className="opacity-90">K7D9  J8U2  L9A1  H0F3  A8S2  G4H1  W9Q0  L8K3</p>
             <p className="opacity-80">0110  1001  1100  0011  1011  0110  0000  1111</p>
             <p className="opacity-65">SYSTEM SECURE // CODES PARSED // INTRUSION PREVENTED</p>
-            <p className="opacity-40">_DIVSLAYER_ ROOT GATE SYSTEM ACTIVATED CHRONOS_METER</p>
+            <p className="opacity-40">_AMIRREZESF_ ROOT GATE SYSTEM ACTIVATED CHRONOS_METER</p>
           </div>
         );
         break;
@@ -335,7 +335,7 @@ export default function TerminalSection() {
             {/* Tab Name Label */}
             <div className="flex items-center gap-1.5 text-[10px] font-mono text-text-dim/80">
               <Code size={11} className="text-accent-blue" />
-              <span>divslayer@bash:~</span>
+              <span>amirrezesf@bash:~</span>
             </div>
 
             {/* Layout Filler */}
@@ -353,7 +353,7 @@ export default function TerminalSection() {
               <div key={idx} className="space-y-1">
                 <div className="flex items-center gap-1.5 text-xs text-text-main">
                   <span className="text-accent-blue font-bold">~</span>
-                  <span className="text-accent-teal font-semibold">guest@divslayer:</span>
+                  <span className="text-accent-teal font-semibold">guest@amirrezesf:</span>
                   <span className="text-text-dim">{item.input}</span>
                 </div>
                 <div className="pl-4 text-text-dim leading-relaxed">{item.output}</div>
@@ -363,7 +363,7 @@ export default function TerminalSection() {
             {/* Active Current Input Prompt Line */}
             <div className="flex items-center gap-1.5 text-xs text-text-main">
               <span className="text-accent-blue font-bold">~</span>
-              <span className="text-accent-teal font-semibold">guest@divslayer:</span>
+              <span className="text-accent-teal font-semibold">guest@amirrezesf:</span>
               <div className="relative flex-1 flex items-center">
                 <input
                   ref={inputRef}
