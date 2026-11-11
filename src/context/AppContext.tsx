@@ -38,6 +38,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
   // Side effects: update HTML class for theme styling
   useEffect(() => {
     const root = window.document.documentElement;
+    syncHeadWithTheme(theme);
     if (theme === "light") {
       root.classList.add("light");
       root.classList.remove("dark");
@@ -60,6 +61,26 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
   };
 
+  const syncHeadWithTheme = (theme:string)=> { // theme: "light" | "dark"
+    document.querySelectorAll('link[rel="icon"]').forEach((el) => el.remove());
+
+    const add = (href:string, extra = {}) => {
+      const link = document.createElement('link');
+      link.rel = 'icon';
+      link.href = href;
+      Object.entries(extra).forEach(([k, v]) => link.setAttribute(k, v as string));
+      document.head.appendChild(link);
+    };
+    add(`/favicon-${theme}.ico`, { sizes: 'any' });
+    add(`/favicon-${theme}-32x32.png`, { type: 'image/png', sizes: '32x32' });
+    add(`/favicon-${theme}-16x16.png`, { type: 'image/png', sizes: '16x16' });
+
+    document.querySelectorAll('meta[name="theme-color"]').forEach((el) => el.remove());
+    const meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    meta.content = theme === 'dark' ? '#0a0a0a' : '#ffffff';
+    document.head.appendChild(meta);
+  }
   const setLang = (newLang: Lang) => {
     setLangState(newLang);
   };
