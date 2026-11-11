@@ -129,7 +129,7 @@ export default function HeroSection() {
               <div className="absolute inset-7 rounded-full overflow-hidden border-2 border-accent-teal/60 shadow-[0_0_25px_rgba(74,222,128,0.25)] bg-white/80 dark:bg-[#1e201e]/80 flex items-center justify-center p-1 group">
                 <motion.img 
                   src={amirPortrait} 
-                  alt="Amir Reza Esfandiari Portrait" 
+                  alt="Amirreza Esfandiyari Portrait" 
                   className="w-full h-full object-cover rounded-full select-none transform transition-transform duration-500 group-hover:scale-105 group-hover:rotate-1"
                   referrerPolicy="no-referrer"
                 />

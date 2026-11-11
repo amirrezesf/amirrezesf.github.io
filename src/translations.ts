@@ -6,9 +6,9 @@ export const translations = {
     skills: "Skills",
     contactMe: "Contact Me",
     availableForWork: "Available for Work Worldwide",
-    greeting: "Amir Reza Esfandiari",
+    greeting: "Amirreza Esfandiyari",
     role: "Full-Stack Developer",
-    bio: "Hi, I'm AmirReza Esfandiari—a full-stack and mobile developer who turns ideas into functional, engaging experiences. Since I was 15, I've been building interactive web and mobile applications using technologies like Flutter, Django, Vue, Nuxt, and React. I combine creativity with clean, scalable code to craft products that are intuitive, performant, and visually appealing. I'm always exploring new tools and frameworks, excited to bring the next idea to life.",
+    bio: "Hi, I'm Amirreza Esfandiyari—a full-stack and mobile developer who turns ideas into functional, engaging experiences. Since I was 15, I've been building interactive web and mobile applications using technologies like Flutter, Django, Vue, Nuxt, and React. I combine creativity with clean, scalable code to craft products that are intuitive, performant, and visually appealing. I'm always exploring new tools and frameworks, excited to bring the next idea to life.",
     viewWork: "View My Work",
     techStack: "Tech Stack",
     aboutMeTitle: "About Me",
@@ -23,7 +23,7 @@ export const translations = {
     sendEmail: "Send an Email",
     code: "Code",
     demo: "Demo",
-    copyright: "© 2026 AMIR REZA ESFANDIARI. ALL RIGHTS RESERVED.",
+    copyright: "© 2026 Amirreza Esfandiyari. ALL RIGHTS RESERVED.",
     scrollToExplore: "Scroll To Explore"
   },
   fa: {

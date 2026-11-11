@@ -218,7 +218,7 @@ export default function TerminalSection() {
             <div className="space-y-1">
               <p className="text-accent-teal font-bold">amir@amirrezesf.sh</p>
               <p className="text-gray-500">-----------------</p>
-              <p><span className="text-accent-blue font-semibold">OS:</span> AmirReza Esfandiari Profile OS x86_64</p>
+              <p><span className="text-accent-blue font-semibold">OS:</span> Amirreza Esfandiyari Profile OS x86_64</p>
               <p><span className="text-accent-blue font-semibold">Host:</span> Creative Development Core v19</p>
               <p><span className="text-accent-blue font-semibold">Uptime:</span> since June 2024</p>
               <p><span className="text-accent-blue font-semibold">Shell:</span> zsh 5.9 (macOS/Ubuntu hybrid)</p>
