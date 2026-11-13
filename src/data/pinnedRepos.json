@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T14:44:40.714Z",
+  "generatedAt": "2026-11-13T11:37:35.186Z",
   "username": "amirrezesf",
   "source": "pinned",
   "repos": [
@@ -37,7 +37,7 @@
       "pushedAt": "2026-11-03T14:08:10Z",
       "defaultBranch": "main",
       "bannerPath": "mockups/banner.png",
-      "banner": "banners/skyroombot.jpg"
+      "banner": "banners/skyroombot.webp"
     },
     {
       "name": "Food-App",
@@ -62,7 +62,7 @@
       "pushedAt": "2025-10-30T18:22:48Z",
       "defaultBranch": "main",
       "bannerPath": "mockups/banner.png",
-      "banner": "banners/food-app.jpg"
+      "banner": "banners/food-app.webp"
     },
     {
       "name": "Chat-App",
@@ -87,7 +87,7 @@
       "pushedAt": "2025-11-29T12:55:03Z",
       "defaultBranch": "main",
       "bannerPath": "mockups/banner.png",
-      "banner": "banners/chat-app.jpg"
+      "banner": "banners/chat-app.webp"
     },
     {
       "name": "AnyDeskApp",
@@ -107,7 +107,7 @@
       "pushedAt": "2026-07-04T13:11:57Z",
       "defaultBranch": "main",
       "bannerPath": "images/banner.png",
-      "banner": "banners/anydeskapp.jpg"
+      "banner": "banners/anydeskapp.webp"
     },
     {
       "name": "LumiNote",
@@ -129,7 +129,7 @@
       "pushedAt": "2026-08-12T13:53:58Z",
       "defaultBranch": "main",
       "bannerPath": "liminote-banner.png",
-      "banner": "banners/luminote.jpg"
+      "banner": "banners/luminote.webp"
     },
     {
       "name": "Jarvis",
@@ -149,7 +149,7 @@
       "pushedAt": "2026-10-03T22:13:14Z",
       "defaultBranch": "main",
       "bannerPath": "assets/banner.png",
-      "banner": "banners/jarvis.jpg"
+      "banner": "banners/jarvis.webp"
     }
   ]
 }

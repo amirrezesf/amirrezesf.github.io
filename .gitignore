@@ -6,3 +6,7 @@ coverage/
 *.log
 .env*
 !.env.example
+optimized/
+.vscode/
+resize.py
+images_webp

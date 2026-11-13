@@ -21,10 +21,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export const BANNER_DIR = resolve(__dirname, "../src/data/banners");
 
-// Cards render at roughly 700x180 CSS px; 2x keeps it sharp on retina without
-// the multi-megabyte originals.
-const TARGET_WIDTH = 1400;
-const JPEG_QUALITY = 78;
+// Cards render at roughly 700x180 CSS px; the working benchmark showed that
+// a 900px cap with WebP quality 82 keeps the banners small without obvious loss.
+const TARGET_WIDTH = 900;
+const WEBP_QUALITY = 82;
 
 const MAX_SOURCE_BYTES = 12 * 1024 * 1024;
 
@@ -182,19 +182,18 @@ export async function hasImageTool() {
     }
   }
 }
-
 /**
- * Downloads a banner and writes a downscaled JPEG into the banners directory.
+ * Downloads a banner and writes a downscaled WebP into the banners directory.
  * Returns the served path relative to src/data, or null on any failure so a
  * missing image can never break the build.
  */
 export async function processBanner(url, outName) {
-  const outFile = resolve(BANNER_DIR, `${outName}.jpg`);
+  const outFile = resolve(BANNER_DIR, `${outName}.webp`);
 
   // Skip work when an up-to-date file already exists.
   try {
     const s = await stat(outFile);
-    if (s.size > 0) return `banners/${outName}.jpg`;
+    if (s.size > 0) return `banners/${outName}.webp`;
   } catch {
     /* not yet generated */
   }
@@ -215,26 +214,25 @@ export async function processBanner(url, outName) {
   const bin = (await hasImageTool()) ? "magick" : "convert";
   const args = [
     tmpIn,
-    // Never upscale a small banner.
     "-resize",
     `${TARGET_WIDTH}x>`,
     "-strip",
+    "-define",
+    "webp:lossless=0",
+    "-define",
+    "webp:method=6",
     "-quality",
-    String(JPEG_QUALITY),
-    "-interlace",
-    "Plane",
+    String(WEBP_QUALITY),
     outFile,
   ];
 
   try {
     await run(bin, args, { timeout: 90_000 });
   } catch (err) {
-    // Without ImageMagick the raw bytes are still better than nothing.
     console.warn(`  ! could not optimize ${outName}: ${err.message}`);
     await writeFile(outFile, buf);
-    return `banners/${outName}.jpg`;
+    return `banners/${outName}.webp`;
   } finally {
-    // Best-effort cleanup of the temporary source.
     try {
       const { unlink } = await import("node:fs/promises");
       await unlink(tmpIn);
@@ -247,5 +245,5 @@ export async function processBanner(url, outName) {
   console.log(
     `  banner ${outName}: ${(buf.length / 1024).toFixed(0)}KB -> ${(finalSize / 1024).toFixed(0)}KB`,
   );
-  return `banners/${outName}.jpg`;
+  return `banners/${outName}.webp`;
 }
