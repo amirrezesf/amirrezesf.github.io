@@ -8,5 +8,5 @@ coverage/
 !.env.example
 optimized/
 .vscode/
-resize.py
+resize*.py
 images_webp
