@@ -217,7 +217,7 @@ export default function TerminalSection() {
             </div>
             <div className="space-y-1">
               <p className="text-accent-teal font-bold">amir@amirrezesf.sh</p>
-              <p className="text-gray-500">-----------------</p>
+              <p className="text-subtle">-----------------</p>
               <p><span className="text-accent-blue font-semibold">OS:</span> Amirreza Esfandiyari Profile OS x86_64</p>
               <p><span className="text-accent-blue font-semibold">Host:</span> Creative Development Core v19</p>
               <p><span className="text-accent-blue font-semibold">Uptime:</span> since June 2024</p>
@@ -246,7 +246,7 @@ export default function TerminalSection() {
           <div className="text-xs font-mono space-y-2 pt-1">
             <p className="text-accent-teal font-bold">// Direct communications hook initialized:</p>
             <p>Email: <a href="mailto:amir.reza.esf@gmail.com" className="text-accent-blue underline hover:text-accent-teal">amir.reza.esf@gmail.com</a></p>
-            <p className="text-gray-500">Opening system mailclient via local redirect protocol...</p>
+            <p className="text-subtle">Opening system mailclient via local redirect protocol...</p>
           </div>
         );
         // Safely redirect in non-blocking popup
@@ -333,7 +333,7 @@ export default function TerminalSection() {
             </div>
             
             {/* Tab Name Label */}
-            <div className="flex items-center gap-1.5 text-[10px] font-mono text-text-dim/80">
+            <div className="flex items-center gap-1.5 text-[10px] font-mono text-subtle">
               <Code size={11} className="text-accent-blue" />
               <span>amirrezesf@bash:~</span>
             </div>
@@ -378,7 +378,7 @@ export default function TerminalSection() {
                   autoCapitalize="off"
                   spellCheck={false}
                 />
-                <Play size={10} className="absolute right-0 text-accent-blue/50 pointer-events-none" />
+                <Play size={10} className="absolute right-0 text-accent-blue pointer-events-none" />
               </div>
             </div>
 
@@ -387,7 +387,7 @@ export default function TerminalSection() {
 
           {/* Quick interactive Suggestion Drawer */}
           <div className="px-5 py-3 bg-stone-200/40 dark:bg-[#131413]/55 border-t border-glass-border flex flex-wrap gap-2 items-center select-none">
-            <span className="text-[10px] font-mono text-gray-500 mr-2 uppercase tracking-wider">Quick Actions:</span>
+            <span className="text-[10px] font-mono text-subtle mr-2 uppercase tracking-wider">Quick Actions:</span>
             {commandTags.map((tag) => (
               <button
                 key={tag}

@@ -40,7 +40,7 @@ export default function HeroSection() {
           <div className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1">
             
             {/* Code Bracket: < About > */}
-            <div className={`font-mono text-xs text-accent-blue/50 mb-4 select-none flex items-center gap-1.5 ${isRtl ? "justify-start" : ""}`}>
+            <div className={`font-mono text-xs text-accent-blue mb-4 select-none flex items-center gap-1.5 ${isRtl ? "justify-start" : ""}`}>
               <span>&lt;</span>
               <span className="text-accent-blue">{t("about")}</span>
               <span>&gt;</span>
@@ -72,7 +72,7 @@ export default function HeroSection() {
             </motion.p>
 
             {/* Code Bracket: </ About > */}
-            <div className={`font-mono text-xs text-accent-blue/50 mb-10 select-none flex items-center gap-1.5 ${isRtl ? "justify-start" : ""}`}>
+            <div className={`font-mono text-xs text-accent-blue mb-10 select-none flex items-center gap-1.5 ${isRtl ? "justify-start" : ""}`}>
               <span>&lt;/</span>
               <span className="text-accent-blue">{t("about")}</span>
               <span>&gt;</span>
@@ -147,7 +147,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.8 }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center pointer-events-none hidden xl:flex flex-col items-center gap-1.5 text-text-dim/50 font-mono text-xs"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center pointer-events-none hidden xl:flex flex-col items-center gap-1.5 text-subtle font-mono text-xs"
         >
           <span>{t("scrollToExplore")}</span>
           <motion.div

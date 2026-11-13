@@ -74,7 +74,7 @@ export default function ContactSection() {
 
         {/* Minimal Copyright */}
         <div className="mt-16 text-center select-none">
-          <p className="font-mono text-[9px] text-text-dim/40 tracking-widest uppercase">
+          <p className="font-mono text-[9px] text-subtle tracking-widest uppercase">
             {t("copyright")}
           </p>
         </div>

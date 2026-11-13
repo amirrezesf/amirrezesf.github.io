@@ -285,7 +285,7 @@ I'd love to jump on an introduction call to discuss building this!`;
                   {lang === "en" ? "Interactive Parameters" : "تنظیم پارامترهای تعاملی"}
                 </span>
               </div>
-              <span className="text-[9px] text-[#A1A2A1]/60 font-mono hidden sm:inline-block">
+              <span className="text-[9px] text-subtle font-mono hidden sm:inline-block">
                 {lang === "en" ? "Hover ? below for glossary" : "عبارات فنی راهنما دارند"}
               </span>
             </div>
@@ -347,7 +347,7 @@ I'd love to jump on an introduction call to discuss building this!`;
                       <span className="font-sans text-[11px]">{lang === "fa" ? item.titleFA : item.titleEN}</span>
                       {item.term && <TermTooltip term={item.term as any} dir="bottom" />}
                     </div>
-                    <span className="text-[9px] text-[#A1A2A1]/70 font-light leading-snug">
+                    <span className="text-[9px] text-subtle font-light leading-snug">
                       {lang === "fa" ? item.descFA : item.descEN}
                     </span>
                   </div>
@@ -398,7 +398,7 @@ I'd love to jump on an introduction call to discuss building this!`;
                   {lang === "en" ? "System Proposal Architecture" : "معماری پروپوزال پیشنهادی"}
                 </span>
               </div>
-              <div className="text-[9px] font-mono text-text-dim/80 flex items-center gap-1">
+              <div className="text-[9px] font-mono text-subtle flex items-center gap-1">
                 <BookOpen size={10} className="text-accent-teal" />
                 <span>{lang === "en" ? "EDUCATIONAL RUNTIME" : "اموزشی"}</span>
               </div>
@@ -411,7 +411,7 @@ I'd love to jump on an introduction call to discuss building this!`;
               <div className="flex flex-col gap-3">
                 <div className="text-[10px] font-mono text-text-dim uppercase tracking-widest border-b border-stone-200 dark:border-glass-border pb-1 select-none flex items-center justify-between">
                   <span>{lang === "en" ? "Curated Technical Stack" : "پشته فنّی پیشنهادی"}</span>
-                  <span className="text-[8px] text-[#A1A2A1]/40">{lang === "en" ? "Hover icons" : "روی ؟ نگه دارید"}</span>
+                  <span className="text-[8px] text-subtle">{lang === "en" ? "Hover icons" : "روی ؟ نگه دارید"}</span>
                 </div>
                 <ul className="space-y-2 mt-2">
                   {getRecommendedStack().map((item, idx) => (
@@ -436,7 +436,7 @@ I'd love to jump on an introduction call to discuss building this!`;
               <div className="flex flex-col justify-between gap-4 p-4 rounded-xl bg-stone-50 dark:bg-glass-sub-bg border border-stone-200 dark:border-glass-border">
                 
                 <div className="flex flex-col gap-1.5">
-                  <span className="font-mono text-[9px] text-stone-500 dark:text-[#A1A2A1]/70 uppercase tracking-wider select-none flex items-center gap-1.5 border-b border-stone-200 dark:border-glass-border pb-1.5">
+                  <span className="font-mono text-[9px] text-subtle uppercase tracking-wider select-none flex items-center gap-1.5 border-b border-stone-200 dark:border-glass-border pb-1.5">
                     <BookOpen size={11} className="text-accent-teal" />
                     {lang === "fa" ? "مراحل توسعه نرم افزار شما:" : "Your Software Journey Phases:"}
                   </span>

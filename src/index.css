@@ -3,6 +3,30 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
+  --color-accent-teal: 21 128 61;   /* #15803d */
+  --color-accent-blue: 22 101 52;   /* #166534 */
+  --color-subtle: 75 85 99;         /* #4b5563 */
+  --color-subtle-val: #4b5563;
+}
+
+/* OS is dark and the user hasn't forced light */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-accent-teal: 22 163 74;  /* #16a34a */
+    --color-accent-blue: 34 197 94;  /* #22c55e */
+    --color-subtle: 156 163 175;     /* #9ca3af */
+    --color-subtle-val: #9ca3af;
+  }
+}
+
+/* User explicitly chose dark */
+:root[data-theme="dark"] {
+  --color-accent-teal: 22 163 74;
+  --color-accent-blue: 34 197 94;
+  --color-subtle: 156 163 175;
+  --color-subtle-val: #9ca3af;
+}
+:root {
   --color-bg-space-val: #141514;
   --color-accent-blue-val: #3ebd6a;
   --color-accent-teal-val: #4ade80;
@@ -40,6 +64,7 @@
   --color-bg-space: var(--color-bg-space-val);
   --color-accent-blue: var(--color-accent-blue-val);
   --color-accent-teal: var(--color-accent-teal-val);
+  --color-subtle: var(--color-subtle-val);
   --color-text-dim: var(--color-text-dim-val);
   --color-glass-border: var(--color-glass-border-val);
   --color-glass-bg: var(--color-glass-bg-val);

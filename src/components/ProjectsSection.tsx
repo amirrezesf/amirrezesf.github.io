@@ -95,7 +95,7 @@ export default function ProjectsSection() {
                     {project.techStack.map((tech) => (
                       <span
                         key={tech}
-                        className="font-sans text-[11px] font-light text-text-dim/80 px-2.5 py-1 rounded-lg bg-glass-sub-bg border border-glass-border"
+                        className="font-sans text-[11px] font-light text-subtle px-2.5 py-1 rounded-lg bg-glass-sub-bg border border-glass-border"
                       >
                         {tech}
                       </span>
