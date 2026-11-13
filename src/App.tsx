@@ -6,7 +6,7 @@ import ProjectsSection from "./components/ProjectsSection";
 import TerminalSection from "./components/TerminalSection";
 import ProjectPlannerSection from "./components/ProjectPlannerSection";
 import ContactSection from "./components/ContactSection";
-import {AppProvider} from "./context/AppContext";
+import { AppProvider } from "./context/AppContext";
 import './i18n';
 
 function AppContent() {
@@ -14,23 +14,25 @@ function AppContent() {
         <div
             className="min-h-screen bg-bg-space font-sans selection:bg-accent-teal/30 selection:text-text-main relative">
             {/* Custom Cursor Dot & Outline for Desktop */}
-            <CustomCursor/>
+            <CustomCursor />
 
             {/* Navigation Header */}
-            <Header/>
+            <Header />
 
             {/* Structured Single-Screen View Sections */}
-            <HeroSection/>
+            <main>
+                <HeroSection />
 
-            <AboutSection/>
+                <AboutSection />
 
-            <ProjectsSection/>
+                <ProjectsSection />
 
-            <TerminalSection/>
+                <TerminalSection />
 
-            <ProjectPlannerSection/>
+                <ProjectPlannerSection />
 
-            <ContactSection/>
+                <ContactSection />
+            </main>
         </div>
     );
 }
@@ -38,7 +40,7 @@ function AppContent() {
 export default function App() {
     return (
         <AppProvider>
-            <AppContent/>
+            <AppContent />
         </AppProvider>
     );
 }

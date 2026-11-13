@@ -375,6 +375,7 @@ I'd love to jump on an introduction call to discuss building this!`;
                 className={`relative w-10 h-5 rounded-full transition-colors duration-200 cursor-pointer shrink-0 ${
                   hasRealtime ? "bg-accent-blue" : "bg-stone-200 dark:bg-glass-sub-bg border border-stone-300 dark:border-glass-border"
                 }`}
+                role="switch" aria-checked={hasRealtime} aria-label="Real-time sync / WebSockets"
               >
                 <div 
                   className={`absolute top-0.5 left-0.5 bg-white w-4 h-4 rounded-full transition-transform duration-200 ${

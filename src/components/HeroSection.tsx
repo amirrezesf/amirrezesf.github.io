@@ -65,7 +65,7 @@ export default function HeroSection() {
             <motion.p 
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.1 }}
               className={`font-sans text-sm md:text-base text-text-dim leading-relaxed mb-6 font-light max-w-xl ${isRtl ? "text-justify" : ""}`}
             >
               {t("bio")}
