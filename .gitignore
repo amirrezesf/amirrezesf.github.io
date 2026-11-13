@@ -2,3 +2,4 @@ node_modules/
 dist/
 resize.py
 optimized/
+.vscode/
